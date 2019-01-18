@@ -1,6 +1,6 @@
 from channels.auth import AuthMiddlewareStack
-from channels.routing import ProtocolTypeRouter, URLRouter
-
+from channels.routing import ProtocolTypeRouter, URLRouter, ChannelNameRouter
+from chat.consumers import TestConsumer
 import chat.routing
 
 application = ProtocolTypeRouter({
@@ -10,4 +10,7 @@ application = ProtocolTypeRouter({
             chat.routing.websocket_urlpatterns
         )
     ),
+    'channel': ChannelNameRouter({
+        "task-test": TestConsumer,
+    }),
 })
