@@ -15,5 +15,5 @@ python manage.py runworker task-test # 啟動worker 程序
 ## 說明
 1. 開啟chat-room 輸入一些東西，可以在終端機中看到輸出。
 2. TestConsumer 內有二個方法，可以看到是藉由`type`來對應的。
-3. 可以對照著channels_redis的(原始碼)[https://github.com/django/channels_redis]一起來看。test2 會印出`self.channel_layer.__dict__`，這是`class RedisChannelLayer(BaseChannelLayer):`裡的資訊，往下可看到` async def send(self, channel, message):`這是執行`send` 方法上的參數的名字。
+3. 可以對照著channels_redis的[原始碼](https://github.com/django/channels_redis)一起來看。test2 會印出`self.channel_layer.__dict__`，這是`class RedisChannelLayer(BaseChannelLayer):`裡的資訊，往下可看到` async def send(self, channel, message):`這是執行`send` 方法上的參數的名字。
 4. `"task-test"` 其實是channel的名稱，message參數其實又稱為event, 而且被要求是dict。這些資訊可以在channels_redis 的
